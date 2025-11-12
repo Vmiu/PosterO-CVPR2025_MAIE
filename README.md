@@ -173,4 +173,4 @@ If our work is helpful for your research, please cite our papers:
 ```
 
 ## Contact me
-For any questions or further information, please feel free to reach me with email kslh99@outlook.com🫡
+For any questions or further information, please feel free to reach me with email kslh99@alumni.pku.edu.cn🫡
