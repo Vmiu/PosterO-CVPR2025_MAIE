@@ -1,0 +1,7 @@
+._.DS_Store
+.DS_Store
+Dataset/
+__pycache__/
+.venv/
+*.pt
+*.png
