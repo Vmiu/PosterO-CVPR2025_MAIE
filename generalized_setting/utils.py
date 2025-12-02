@@ -40,12 +40,12 @@ def get_args_infer_dataset():
     # parser.add_argument("--model_divs_ckpt", default='', type=str)
 
     # large language model
-    parser.add_argument("--model_dir", default='', type=str)
+    parser.add_argument("--model_dir", default='', type=str, help="Model directory (for vLLM)")
     parser.add_argument("--temperature", default=0.7, type=float)
     parser.add_argument("--max_tokens", default=800, type=int)
-    parser.add_argument("--top_p", default=1, type=int)
-    parser.add_argument("--frequency_penalty", default=0, type=int)
-    parser.add_argument("--presence_penalty", default=0, type=int)
+    parser.add_argument("--top_p", default=1.0, type=float)
+    parser.add_argument("--frequency_penalty", default=0.0, type=float)
+    parser.add_argument("--presence_penalty", default=0.0, type=float)
     parser.add_argument("--num_return", default=10, type=int)
     parser.add_argument("--stop_token", default="\n\n", type=str)
     

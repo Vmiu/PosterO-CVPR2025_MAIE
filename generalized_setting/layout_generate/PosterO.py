@@ -22,12 +22,12 @@ class PosterO:
             self.inference_dataset_split(split, llm_sampl, prompt_dict, label_info, label_rback, N, debug=True, split_name="test", checkpoint=checkpoint['test'])
 
     def inference_from_planter(self, llm_sampl, prompt_dict, label_info, save_path, label_rback, N, checkpoint):
-        if 'db_valid' in dir(self.layout_planter):
+        if 'db_valid' in dir(self.layout_planter) and self.layout_planter.db_valid is not None:
             split = self.layout_planter.db_valid
             print(f"Start inferencing `annotated test split` with {len(split)}.")
             self.inference_dataset_split(split, llm_sampl, prompt_dict, label_info, label_rback, N, split_name="valid", save_path=save_path, checkpoint=checkpoint['valid'])
         
-        if 'db_test' in dir(self.layout_planter):
+        if 'db_test' in dir(self.layout_planter) and self.layout_planter.db_test is not None:
             split = self.layout_planter.db_test
             print(f"Start inferencing `unannotated test split` with {len(split)}.")
             self.inference_dataset_split(split, llm_sampl, prompt_dict, label_info, label_rback, N, split_name="test", save_path=save_path, checkpoint=checkpoint['test'])

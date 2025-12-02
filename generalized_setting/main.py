@@ -21,9 +21,11 @@ def main():
         print(f"{args.save_path.format('plain', 'top')} already exists.")
         return None
     
-    from vllm import LLM, SamplingParams
+    # Use poe.com API with Claude-Sonnet-4.5
+    from llm_api_wrapper import LLM, SamplingParams
     if not args.debug or load_model:
-        model = LLM(args.model_dir)
+        # Get API key from environment variable POE_API_KEY
+        model = LLM()
         sampl = SamplingParams(
             temperature=args.temperature,
             max_tokens=args.max_tokens,
@@ -31,7 +33,7 @@ def main():
             frequency_penalty=args.frequency_penalty,
             presence_penalty=args.presence_penalty,
             n=args.num_return,
-            stop=[args.stop_token],
+            stop=[args.stop_token] if args.stop_token else None,
         )
     else:
         model = None
@@ -112,7 +114,7 @@ def main():
                 layout_planter.db_valid = tmp['valid']
                 layout_planter.db_test = tmp['test']
                 checkpoint = tmp['checkpoint'] + 1
-                if 'generated' in layout_planter.db_valid[checkpoint]:
+                if layout_planter.db_valid is not None and checkpoint < len(layout_planter.db_valid) and 'generated' in layout_planter.db_valid[checkpoint]:
                     checkpoint = {'valid': len(layout_planter.db_valid), 'test': checkpoint}
                 else:
                     checkpoint = {'valid': checkpoint, 'test': 0}

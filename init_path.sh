@@ -1,1 +1,1 @@
-export DATASET_ROOT="/home/xuxiaoyuan/calg_dataset"
+export DATASET_ROOT="/mnt/d/MscY1Fall/MAIE5421CV/PosterO-CVPR2025/Dataset"
